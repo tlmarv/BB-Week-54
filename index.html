@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 53 Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.js"></script>
+</head>
+<body>
+
+    <div class="quiz-container">
+        
+        <nav class="question-nav">
+            <h3>Questions</h3>
+            <ul id="question-list"></ul>
+        </nav>
+
+        <div class="quiz-content">
+            <header>
+                <div class="header-top-row">
+                    <h1>Week 53 Quiz</h1>
+                    <button id="help-btn" title="Show Keyboard Shortcuts">?</button>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="progress-bar"></div>
+                </div>
+                <div class="score-tracker">
+                    <p>Progress: <span id="progress">0/0</span></p>
+                    <p>Correct: <span id="correct">0</span></p>
+                    <p>Incorrect: <span id="incorrect">0</span></p>
+                </div>
+            </header>
+
+            <div id="question-container">
+                <div class="question-header">
+                    <h2 id="question-text"></h2>
+                    <button id="mark-review-btn" title="Mark for Review">🚩</button>
+                </div>
+                <div id="choices-container"></div>
+                <div id="explanation" class="hidden"></div>
+            </div>
+
+            <div class="quiz-controls">
+                <button id="prev-btn">⬅ Previous</button>
+                <button id="next-btn">Next ➡</button>
+            </div>
+
+        </div>
+
+        <div id="results-container" class="hidden">
+            <h2>🎉 Congratulations! 🎉</h2>
+            <p id="final-score"></p>
+            <p id="high-score-text"></p>
+            <button id="restart-btn">Restart Quiz</button>
+            <button id="review-btn">Review Answers</button>
+        </div>
+
+    </div>
+
+    <div id="help-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="close-modal-btn">&times;</button>
+            <h3>Controls & Shortcuts</h3>
+            <ul>
+                <li><strong>Spacebar</strong>: Next Question</li>
+                <li><strong>B</strong>: Previous Question</li>
+                <li><strong>1-5</strong>: Select Answer Choice</li>
+                <li><strong>Right-Click</strong>: Strikethrough an answer</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
