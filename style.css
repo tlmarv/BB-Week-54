@@ -198,6 +198,27 @@ header h1 {
     border-radius: 5px;
 }
 
+.reference-box {
+    margin-top: 15px;
+    padding: 12px;
+    background: #2d3b55;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid #0077b6;
+}
+
+.reference-box a {
+    color: #00ff99;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.reference-box a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
 .hidden {
     display: none !important;
 }
