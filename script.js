@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const questionText = document.getElementById("question-text");
     const choicesContainer = document.getElementById("choices-container");
     const explanationBox = document.getElementById("explanation");
+    const referenceContainer = document.getElementById("reference-container"); // Get reference container
     const progressText = document.getElementById("progress");
     const progressBar = document.getElementById("progress-bar");
     const correctText = document.getElementById("correct");
@@ -111,6 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
             choicesContainer.appendChild(button);
         });
 
+        // --- MODIFIED SECTION ---
         if (answeredQuestions[index]) {
             choicesContainer.classList.add("answered");
             const correctChoiceIndex = q.correctAnswer;
@@ -119,10 +121,25 @@ document.addEventListener("DOMContentLoaded", () => {
             if (selectedChoiceIndex !== null && selectedChoiceIndex !== correctChoiceIndex) {
                 choicesContainer.children[selectedChoiceIndex].classList.add("incorrect");
             }
-        }
+            
+            // Show explanation
+            explanationBox.className = explanationsShown[index] ? "" : "hidden";
+            explanationBox.textContent = explanationsShown[index] ? q.explanation : "";
 
-        explanationBox.className = explanationsShown[index] ? "" : "hidden";
-        explanationBox.textContent = explanationsShown[index] ? q.explanation : "";
+            // Show reference link if it exists and is in the correct format
+            if (q.reference && q.reference.url && q.reference.text) {
+                referenceContainer.innerHTML = `<a href="${q.reference.url}" target="_blank">${q.reference.text}</a>`;
+                referenceContainer.className = "reference-box";
+            } else {
+                referenceContainer.className = "hidden";
+            }
+
+        } else {
+            // Hide explanation and reference if question is not answered
+            explanationBox.className = "hidden";
+            referenceContainer.className = "hidden";
+        }
+        // --- END OF MODIFIED SECTION ---
         
         markReviewBtn.classList.toggle("marked", markedForReview[index]);
         updateProgress();
